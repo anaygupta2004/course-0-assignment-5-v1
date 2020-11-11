@@ -2,27 +2,47 @@
 #include <string>
 using namespace std;
 
-int main() {
+int GetInputNumber() {
+  int number;
+  cout << "Enter Number: ";
+  cin >> number;
+  return number;
+}
+char GetInputOperator() {
+  char operation;
+  cout << "Enter Operator: ";
+  cin >> operation;
+  return operation;
+}
+void FunctionCalculator() {
   int first_number = GetInputNumber();
-  char operator = GetInputOperator();
+  char operation = GetInputOperator();
   int second_number = GetInputNumber();
-
   int running_total = 0;
-  if (operator == '+') {
+  if (operation == '+') {
     running_total = first_number + second_number;
   }
-  if (operator == '%') {
+  else if (operation == '%') {
     running_total = first_number % second_number;
   }
-  cout << " = " << running_total << endl;
+  else if (operation == '*') {
+    running_total = first_number * second_number;
+  }
+  else if (operation == '/') {
+    running_total = first_number / second_number;
+  }
+  else {
+    running_total = first_number - second_number;
+  }
+  cout << first_number << " " << operation << " " << second_number << " = " << running_total << endl;
 
-  operator = GetInputOperator();
-  int third_number = GetInputNumber();
-  if (operator == '*') {
-    running_total = running_total * third_number;
+}
+
+int main() {
+  int calculations;
+  cout << "How many calculations would you like to do? ";
+  cin >> calculations;
+  for (int i = 0; i < calculations; i++) {
+    FunctionCalculator();
   }
-  if (operator == '/') {
-    running_total = running_total / third_number;
-  }
-  cout << " = " << running_total << endl;
 }
